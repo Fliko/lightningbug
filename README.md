@@ -21,3 +21,7 @@ existing skills rather than learning how to maintain a large C project.
     - Use Table Driven Testing
     - Use Benchmarking for vital areas
 - Practice with profiling tools
+
+## Citations
+
+Mark Claypool. Dragonfly - Program a Game Engine from Scratch, Interactive Media and Game Development, Worcester Polytechnic Institute, 2014. Online at: http://dragonfly.wpi.edu/book/
