@@ -1,0 +1,189 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-c",
+      "-Wall",
+      "-std=c++17",
+      "-I../dragonfly/include",
+      "-I/home/flikos/src/SFML-2.5.1/include",
+      "-I./include",
+      "-o",
+      "game",
+      "game.cpp"
+    ],
+    "directory": "/home/flikos/code/fliko/saucershoot/game",
+    "file": "/home/flikos/code/fliko/saucershoot/game/game.cpp",
+    "output": "/home/flikos/code/fliko/saucershoot/game/game"
+  },
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-c",
+      "-Wall",
+      "-std=c++17",
+      "-I../dragonfly/include",
+      "-I/home/flikos/src/SFML-2.5.1/include",
+      "-I./include",
+      "-o",
+      "game",
+      "Saucer.cpp"
+    ],
+    "directory": "/home/flikos/code/fliko/saucershoot/game",
+    "file": "/home/flikos/code/fliko/saucershoot/game/Saucer.cpp",
+    "output": "/home/flikos/code/fliko/saucershoot/game/game"
+  },
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-c",
+      "-Wall",
+      "-std=c++17",
+      "-I../dragonfly/include",
+      "-I/home/flikos/src/SFML-2.5.1/include",
+      "-I./include",
+      "-o",
+      "game",
+      "Hero.cpp"
+    ],
+    "directory": "/home/flikos/code/fliko/saucershoot/game",
+    "file": "/home/flikos/code/fliko/saucershoot/game/Hero.cpp",
+    "output": "/home/flikos/code/fliko/saucershoot/game/game"
+  },
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-c",
+      "-Wall",
+      "-std=c++17",
+      "-I../dragonfly/include",
+      "-I/home/flikos/src/SFML-2.5.1/include",
+      "-I./include",
+      "-o",
+      "game",
+      "Bullet.cpp"
+    ],
+    "directory": "/home/flikos/code/fliko/saucershoot/game",
+    "file": "/home/flikos/code/fliko/saucershoot/game/Bullet.cpp",
+    "output": "/home/flikos/code/fliko/saucershoot/game/game"
+  },
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-c",
+      "-Wall",
+      "-std=c++17",
+      "-I../dragonfly/include",
+      "-I/home/flikos/src/SFML-2.5.1/include",
+      "-I./include",
+      "-o",
+      "game",
+      "Reticle.cpp"
+    ],
+    "directory": "/home/flikos/code/fliko/saucershoot/game",
+    "file": "/home/flikos/code/fliko/saucershoot/game/Reticle.cpp",
+    "output": "/home/flikos/code/fliko/saucershoot/game/game"
+  },
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-c",
+      "-Wall",
+      "-std=c++17",
+      "-I../dragonfly/include",
+      "-I/home/flikos/src/SFML-2.5.1/include",
+      "-I./include",
+      "-o",
+      "game",
+      "Explosion.cpp"
+    ],
+    "directory": "/home/flikos/code/fliko/saucershoot/game",
+    "file": "/home/flikos/code/fliko/saucershoot/game/Explosion.cpp",
+    "output": "/home/flikos/code/fliko/saucershoot/game/game"
+  },
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-c",
+      "-Wall",
+      "-std=c++17",
+      "-I../dragonfly/include",
+      "-I/home/flikos/src/SFML-2.5.1/include",
+      "-I./include",
+      "-o",
+      "game",
+      "EventNuke.cpp"
+    ],
+    "directory": "/home/flikos/code/fliko/saucershoot/game",
+    "file": "/home/flikos/code/fliko/saucershoot/game/EventNuke.cpp",
+    "output": "/home/flikos/code/fliko/saucershoot/game/game"
+  },
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-c",
+      "-Wall",
+      "-std=c++17",
+      "-I../dragonfly/include",
+      "-I/home/flikos/src/SFML-2.5.1/include",
+      "-I./include",
+      "-o",
+      "game",
+      "Points.cpp"
+    ],
+    "directory": "/home/flikos/code/fliko/saucershoot/game",
+    "file": "/home/flikos/code/fliko/saucershoot/game/Points.cpp",
+    "output": "/home/flikos/code/fliko/saucershoot/game/game"
+  },
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-c",
+      "-Wall",
+      "-std=c++17",
+      "-I../dragonfly/include",
+      "-I/home/flikos/src/SFML-2.5.1/include",
+      "-I./include",
+      "-o",
+      "game",
+      "Star.cpp"
+    ],
+    "directory": "/home/flikos/code/fliko/saucershoot/game",
+    "file": "/home/flikos/code/fliko/saucershoot/game/Star.cpp",
+    "output": "/home/flikos/code/fliko/saucershoot/game/game"
+  },
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-c",
+      "-Wall",
+      "-std=c++17",
+      "-I../dragonfly/include",
+      "-I/home/flikos/src/SFML-2.5.1/include",
+      "-I./include",
+      "-o",
+      "game",
+      "GameOver.cpp"
+    ],
+    "directory": "/home/flikos/code/fliko/saucershoot/game",
+    "file": "/home/flikos/code/fliko/saucershoot/game/GameOver.cpp",
+    "output": "/home/flikos/code/fliko/saucershoot/game/game"
+  },
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-c",
+      "-Wall",
+      "-std=c++17",
+      "-I../dragonfly/include",
+      "-I/home/flikos/src/SFML-2.5.1/include",
+      "-I./include",
+      "-o",
+      "game",
+      "GameStart.cpp"
+    ],
+    "directory": "/home/flikos/code/fliko/saucershoot/game",
+    "file": "/home/flikos/code/fliko/saucershoot/game/GameStart.cpp",
+    "output": "/home/flikos/code/fliko/saucershoot/game/game"
+  }
+]
