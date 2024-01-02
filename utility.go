@@ -110,7 +110,7 @@ func (l *DefaultList) DeleteMarked() {
 	parts := make(DefaultList, 0)
 	last_slice := 0
 	for i, o := range *l {
-		if o.GetDeleted() {
+		if o.Deleted() {
 			parts = append(parts, (*l)[last_slice:i]...)
 			last_slice = i + 1
 		}
@@ -123,7 +123,7 @@ func (l *DefaultList) DeleteMarked() {
 
 func (l *DefaultList) FindId(id int) *Object {
 	for _, o := range *l {
-		if o.GetId() == id {
+		if o.Id() == id {
 			return &o
 		}
 	}
@@ -133,7 +133,7 @@ func (l *DefaultList) FindId(id int) *Object {
 func (l *DefaultList) FindKind(k string) []Object {
 	out := make([]Object, 0)
 	for _, o := range *l {
-		if o.GetKind() == k {
+		if o.Kind() == k {
 			out = append(out, o)
 		}
 	}
@@ -144,7 +144,7 @@ func (l *DefaultList) FindKind(k string) []Object {
 func (l *DefaultList) FindDeleted(b bool) []Object {
 	out := make([]Object, 0)
 	for _, o := range *l {
-		if o.GetDeleted() == b {
+		if o.Deleted() == b {
 			out = append(out, o)
 		}
 	}
