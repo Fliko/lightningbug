@@ -59,13 +59,16 @@ func (v Vector) IsEqual(vec Vector) bool {
 
 type Object interface {
 	// Does the work
+	Spawn(context.Context)
 	Update(context.Context)
+	Delete(context.Context)
 	EventHandler(Event) int
 
 	// Returns values for required data
-	GetKind() string
-	GetId() int
-	GetPosition() Vector
+	Kind() string
+	Id() int
+	Position() Vector
+	Deleted() bool
 }
 
 // RandId creates a random integer
@@ -77,4 +80,74 @@ func RandId() (int, error) {
 	}
 
 	return int(id.Int64()), nil
+}
+
+type ObjectList interface {
+	List() []Object
+	Insert(Object)
+	Empty()
+	DeleteMarked()
+
+	FindId(int) *Object
+	FindKind(string) []Object
+}
+
+type DefaultList []Object
+
+func (l *DefaultList) List() []Object {
+	return *l
+}
+
+func (l *DefaultList) Insert(o Object) {
+	*l = append(*l, o)
+}
+
+func (l *DefaultList) Empty() {
+	*l = make(DefaultList, 0)
+}
+
+func (l *DefaultList) DeleteMarked() {
+	parts := make(DefaultList, 0)
+	last_slice := 0
+	for i, o := range *l {
+		if o.GetDeleted() {
+			parts = append(parts, (*l)[last_slice:i]...)
+			last_slice = i + 1
+		}
+	}
+
+	if len(parts) > 0 {
+		*l = parts
+	}
+}
+
+func (l *DefaultList) FindId(id int) *Object {
+	for _, o := range *l {
+		if o.GetId() == id {
+			return &o
+		}
+	}
+	return nil
+}
+
+func (l *DefaultList) FindKind(k string) []Object {
+	out := make([]Object, 0)
+	for _, o := range *l {
+		if o.GetKind() == k {
+			out = append(out, o)
+		}
+	}
+
+	return out
+}
+
+func (l *DefaultList) FindDeleted(b bool) []Object {
+	out := make([]Object, 0)
+	for _, o := range *l {
+		if o.GetDeleted() == b {
+			out = append(out, o)
+		}
+	}
+
+	return out
 }

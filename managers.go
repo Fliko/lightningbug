@@ -6,19 +6,13 @@ import (
 	"time"
 
 	"github.com/go-logr/logr"
+	"github.com/pkg/errors"
 )
 
 type Manager interface {
 	// A manager defines something that needs to start and stop
 	Start() int
 	Stop()
-}
-
-// WorldManager is a manager that moves and draws objects
-type WorldManager interface {
-	Manager
-	Move(context.Context, Object)
-	Draw(context.Context, Object)
 }
 
 // LogManager is a manager that controlls logging
@@ -59,7 +53,6 @@ func (lm *LogManager) Stop() {
 // GameManager is a manager that runs the Game Loop
 type GameManager struct {
 	GameOver bool
-	Objects  []Object
 	Ctx      context.Context
 	m        sync.Mutex
 
@@ -71,7 +64,7 @@ type GameManager struct {
 }
 
 func NewGameManager(lm LogManager, wm WorldManager) *GameManager {
-	gm := GameManager{lm: lm, wm: wm, Objects: make([]Object, 0)}
+	gm := GameManager{lm: lm, wm: wm}
 	gm.loopDuration = 33 * time.Millisecond
 	gm.Ctx = context.TODO()
 
@@ -91,15 +84,15 @@ func (gm *GameManager) Run() {
 	for !gm.GameOver {
 		time_start := time.Now()
 
-		for _, obj := range gm.Objects {
-			obj.Update(gm.Ctx)
-		}
+		// Send events to each object
 
-		for _, obj := range gm.Objects {
+		gm.wm.Update(gm.Ctx)
+
+		for _, obj := range gm.wm.Objects.List() {
 			gm.wm.Move(gm.Ctx, obj)
 		}
 
-		for _, obj := range gm.Objects {
+		for _, obj := range gm.wm.Objects.List() {
 			gm.wm.Draw(gm.Ctx, obj)
 		}
 
@@ -114,9 +107,7 @@ func (gm *GameManager) FrameDuration() time.Duration {
 }
 
 func (gm *GameManager) Register(obj Object) {
-	gm.m.Lock()
-	gm.Objects = append(gm.Objects, obj)
-	gm.m.Unlock()
+	gm.wm.AddObject(gm.Ctx, obj)
 }
 
 type DisplayManager struct {
@@ -134,3 +125,52 @@ func (gm *DisplayManager) Stop() {
 type InputManager struct{}
 
 type ResourceManager struct{}
+
+// WorldManager is a manager that moves and draws objects
+type WorldManager struct {
+	Started bool
+	Objects ObjectList
+}
+
+func NewWorldManager(t ObjectList) (*WorldManager, error) {
+	if t == nil {
+		return nil, errors.New("objectList must not be nil")
+	}
+
+	return &WorldManager{
+		Started: true,
+		Objects: t,
+	}, nil
+}
+
+func (wm *WorldManager) Start() int {
+	if wm.Started {
+		return 1
+	}
+	wm.Started = true
+	return 1
+}
+
+func (wm *WorldManager) Stop() {
+	if !wm.Started {
+		return
+	}
+	wm.Started = false
+	wm.Objects.Empty()
+}
+
+func (wm *WorldManager) Update(ctx context.Context) {
+	l := wm.Objects.List()
+	wm.Objects.Empty()
+	for _, o := range l {
+		if !o.Deleted() {
+			o.Update(ctx)
+			wm.Objects.Insert(o)
+		} else {
+			o.Delete(ctx)
+		}
+	}
+}
+
+func (wm *WorldManager) Move(ctx context.Context) {}
+func (wm *WorldManager) Draw(ctx context.Context) {}
