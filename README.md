@@ -4,7 +4,7 @@ Based on the Dragonfly game engine tutorial found [here](https://dragonfly.wpi.e
 
 ## SaucerShoot
 
-Example game using dragonfly game engine. Learing what is expected of a game engine.
+Example game using the dragonfly game engine. Learing what is expected of a game engine.
 
 ## Root
 
